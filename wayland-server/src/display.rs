@@ -77,6 +77,12 @@ impl<State> AsFd for Display<State> {
     }
 }
 
+impl<State> AsRawFd for Display<State> {
+  fn as_raw_fd(&self) -> RawFd {
+    self.as_fd().as_raw_fd()
+  }
+}
+
 /// A handle to the Wayland display
 ///
 /// A display handle may be constructed from a [`Handle`] using it's [`From`] implementation.
